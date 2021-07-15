@@ -1,20 +1,21 @@
 <template>
-  <h1>Events For Good</h1>
-  <div class="events">
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
+  <h1>Student Information</h1>
+  <div class="students">
+    <StudentCard v-for="event in events" :key="event.id" :event="event" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 
-import EventCard from '@/components/EventCard.vue'
+import StudentCard from '@/components/StudentCard.vue'
 //import NewCard from '@/components/newCard.vue'
-import EventService from '@/services/EventService.js'
+import StudentService from '@/services/StudentService.js'
+
 export default {
-  name: 'EventList',
+  name: 'StudentList',
   components: {
-    EventCard
+    StudentCard
     // NewCard
   },
   data() {
@@ -23,7 +24,7 @@ export default {
     }
   },
   created() {
-    EventService.getEvent()
+    StudentService.getStudents()
       .then((response) => {
         this.events = response.data
         console.log(response.data)
@@ -36,7 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.events {
+.students {
   display: flex;
   flex-direction: column;
   align-items: center;

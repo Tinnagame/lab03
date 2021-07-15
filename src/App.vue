@@ -3,8 +3,9 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/NewPage">New Page</router-link> |
+    <router-link to="/StudentList">Student</router-link> |
   </div>
-  
+
   <router-view />
 </template>
 

@@ -1,21 +1,21 @@
 <template>
   <div class="events">
-     <NewCard v-for="event in events" :key="event.id" :event="event" />
+    <NewCard v-for="event in events" :key="event.id" :event="event" />
   </div>
-   
 </template>
 
 <script>
 // @ is an alias to /src
 import NewCard from '@/components/newCard.vue'
+import EventService from '@/services/EventService.js'
 export default {
   name: 'NewPage',
   components: {
-    NewCard,
+    NewCard
   },
   data() {
     return {
-      events: [
+      /*events: [
         {
           id: 5928101,
           category: 'animal welfare',
@@ -49,9 +49,21 @@ export default {
           petsAllowed: false,
           organizer: 'Carey Wales'
         }
-      ]
+      ]*/
+      events: null
     }
+  },
+    created() {
+    EventService.getEvent()
+      .then((response) => {
+        this.events = response.data
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
+  
 }
 </script>
 
